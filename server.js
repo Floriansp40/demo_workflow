@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true}))
 /***********************/
 /*** ROUTAGE PRINCIPAL */
 
-app.get('/', (req, res) => res.send(`Good Job, this API is running now..`))
+app.get('/', (req, res) => res.send(`Good Job, this API is running now.................`))
 
 app.get('/second', (req, res) => res.send(`Another test`))
 
