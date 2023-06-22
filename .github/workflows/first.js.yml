@@ -11,7 +11,8 @@ on:
 
 jobs:
   hello:
-
+    # add control to avoid action start on keyword
+    if: ${{ !contains(github.event.head_commit.message, '#code') }}
     runs-on: ubuntu-latest
 
     # Step avec params en strategie
