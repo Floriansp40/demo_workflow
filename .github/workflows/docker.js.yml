@@ -3,10 +3,6 @@ name: DockerHub Push
 on:
   workflow_call
 
-#   push:
-#     branches:
-#       - "main"
-
 jobs:
   push:
     runs-on: ubuntu-latest
@@ -21,6 +17,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_LOGIN }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Extract metadata (label and tags)
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: arocode/demo_workflow
+
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -30,6 +32,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB.LOGIN }}/demo_workflow
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       
