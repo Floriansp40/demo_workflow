@@ -21,6 +21,14 @@ node -v
 npm -v
 
 
-echo "Install NODEMON ?"
-read void
-sudo npm i -g nodemon
+echo "Select your node process Handler ?"
+echo "[1] for Nodemon"
+echo "[2] for pm2"
+
+read choice
+
+if [ $choice == "1" ]; then
+    sudo npm i -g nodemon
+else
+    sudo npm i -g pm2
+fi
