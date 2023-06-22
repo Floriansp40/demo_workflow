@@ -1,0 +1,38 @@
+# This workflow is submit to first test result
+
+name: Pre-action CI - Deploy CD
+
+on:
+  workflow_run:
+    workflows: ["First Node.js CI"]
+    types:
+      - completed
+
+jobs:
+  compil:
+    # The rest of this workflow will be abord if First Node.js CI failed
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Compile
+        run: echo Code compiled
+
+  deploy:
+    needs: [compil]
+    runs-on: self-hosted
+
+    # Step avec params en strategie
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
