@@ -37,3 +37,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: pm2 restart pm2.config.js
+
+  docker:
+    needs: [compil]
+    uses: ./.github/workflows/docker.js.yml
