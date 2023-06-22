@@ -15,7 +15,7 @@ describe('Route', () => {
             expect(response.status).toBe(200)
         })
         it('Should return 200 status', async () => {
-            const response = await request(server).get('/seconds')
+            const response = await request(server).get('/second')
             expect(response.status).toBe(200)
         })
         it('Should return 501 status', async () => {
