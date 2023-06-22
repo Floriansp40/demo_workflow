@@ -41,3 +41,4 @@ jobs:
   docker:
     needs: [compil]
     uses: ./.github/workflows/docker.js.yml
+    secrets: inherit
