@@ -14,5 +14,13 @@ describe('Route', () => {
             const response = await request(server).get('/')
             expect(response.status).toBe(200)
         })
+        it('Should return 200 status', async () => {
+            const response = await request(server).get('/seconds')
+            expect(response.status).toBe(200)
+        })
+        it('Should return 501 status', async () => {
+            const response = await request(server).get('/marcel')
+            expect(response.status).toBe(501)
+        })
     })
 })
