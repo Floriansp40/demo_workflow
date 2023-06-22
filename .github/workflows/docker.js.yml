@@ -1,10 +1,10 @@
 name: DockerHub Push
 
 on:
-  #workflow_call
-  push:
-    branches:
-      - "main"
+  workflow_call
+#   push:
+#     branches:
+#       - "main"
 
 jobs:
   push:
