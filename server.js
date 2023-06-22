@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: true}))
 
 app.get('/', (req, res) => res.send(`Good Job, this API is running now`))
 
+app.get('/second', (req, res) => res.send(`Another test`))
+
 app.all('*', (req, res) => res.status(501).send(`What the hell are you doing ?`))
 
 /***************/
