@@ -32,3 +32,5 @@ if [ $choice == "1" ]; then
 else
     sudo npm i -g pm2
 fi
+
+exit 0

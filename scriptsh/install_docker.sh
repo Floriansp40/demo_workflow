@@ -53,3 +53,5 @@ echo "############################"
 echo " "
 docker version
 docker-compose version
+
+exit 0

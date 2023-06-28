@@ -30,4 +30,4 @@ source .bashrc
 echo "Install LazyDocker"
 go install github.com/jesseduffield/lazydocker@latest
 
-lazydocker
+exit 0
